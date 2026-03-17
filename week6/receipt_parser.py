@@ -1,31 +1,45 @@
-#1
-def parse_receipt(text):
-    lines = text.split("\n")
-    items = []
-    for line in lines:
-        if "-" in line:
-            name, price = line.split("-")
-            items.append((name.strip(), float(price.strip())))
-    return items
+import re
+import json
 
-#2
-def calculate_total(items):
-    return sum(price for _, price in items)
+# Read file
+with open("raw.txt", "r") as file:
+    text = file.read()
 
-#3
-def read_receipt(filename):
-    with open(filename, "r", encoding="utf-8") as f:
-        return f.read()
+# 1. Extract prices
+prices = re.findall(r"\d+\.\d{2}", text)
+prices = list(map(float, prices))
 
-#4
-try:
-    data = read_receipt("raw.txt")
-except FileNotFoundError:
-    print("Файл не найден")
+# 2. Extract items (name + price)
+items = re.findall(r"([A-Za-z]+)\s+(\d+\.\d{2})", text)
+parsed_items = [{"name": name, "price": float(price)} for name, price in items]
 
-#5
-if __name__ == "__main__":
-    text = read_receipt("raw.txt")
-    items = parse_receipt(text)
-    total = calculate_total(items)
-    print("Итого:", total)
+# 3. Calculate total
+calculated_total = sum([item["price"] for item in parsed_items])
+
+# 4. Extract date
+date_match = re.search(r"\d{2}/\d{2}/\d{4}", text)
+date = date_match.group() if date_match else None
+
+# 5. Extract time
+time_match = re.search(r"\d{2}:\d{2}", text)
+time = time_match.group() if time_match else None
+
+# 6. Extract payment method
+payment_match = re.search(r"Payment:\s*(\w+)", text)
+payment = payment_match.group(1) if payment_match else None
+
+# 7. Extract total from receipt
+total_match = re.search(r"Total:\s*(\d+\.\d{2})", text)
+total = float(total_match.group(1)) if total_match else None
+
+# Output result
+result = {
+    "date": date,
+    "time": time,
+    "items": parsed_items,
+    "calculated_total": round(calculated_total, 2),
+    "receipt_total": total,
+    "payment": payment
+}
+
+print(json.dumps(result, indent=4))
