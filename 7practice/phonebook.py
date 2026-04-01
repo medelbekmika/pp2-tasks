@@ -10,3 +10,15 @@ conn = psycopg2.connect(
 
 cur = conn.cursor()
 
+
+
+#2
+from connect import connect
+conn = connect()
+if conn:
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM phonebook;")
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
+    conn.close()
