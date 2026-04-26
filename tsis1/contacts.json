@@ -1,0 +1,91 @@
+[
+  {
+    "username": "alice",
+    "firstname": "Alice",
+    "lastname": "Smith",
+    "email": "alice@gmail.com",
+    "birthday": "1995-03-15",
+    "group": "Friend",
+    "phones": [
+      {
+        "phone": "+77011234567",
+        "type": "mobile"
+      },
+      {
+        "phone": "+77019998877",
+        "type": "home"
+      }
+    ]
+  },
+  {
+    "username": "bob",
+    "firstname": "Bob",
+    "lastname": "Johnson",
+    "email": "bob@work.com",
+    "birthday": "1988-07-22",
+    "group": "Work",
+    "phones": [
+      {
+        "phone": "+77029876543",
+        "type": "work"
+      }
+    ]
+  },
+  {
+    "username": "carol",
+    "firstname": "Carol",
+    "lastname": "Williams",
+    "email": "carol@mail.ru",
+    "birthday": "2000-11-01",
+    "group": "Family",
+    "phones": [
+      {
+        "phone": "+77031112233",
+        "type": "mobile"
+      }
+    ]
+  },
+  {
+    "username": "diana",
+    "firstname": "Diana",
+    "lastname": "Lee",
+    "email": "diana@gmail.com",
+    "birthday": "2001-02-10",
+    "group": "Friend",
+    "phones": [
+      {
+        "phone": "+77070001122",
+        "type": "mobile"
+      }
+    ]
+  },
+  {
+    "username": "david",
+    "firstname": "David",
+    "lastname": "Brown",
+    "email": "david@gmail.com",
+    "birthday": "1993-05-30",
+    "group": "Other",
+    "phones": [
+      {
+        "phone": "+77044445566",
+        "type": "mobile"
+      }
+    ]
+  },
+  {
+    "username": "emma",
+    "firstname": "Emma",
+    "lastname": "Davis",
+    "email": "emma@company.com",
+    "birthday": "1990-12-12",
+    "group": "Work",
+    "phones": [
+      {
+        "phone": "+77055556677",
+        "type": "work"
+      }
+    ]
+  }
+]
+
