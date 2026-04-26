@@ -33,11 +33,8 @@ BEGIN
     RAISE NOTICE 'Phone % (%) added to contact %', p_phone, p_type, p_contact_name;
 END;
 $$;
-
--- ----------------------------------------------------------------
 -- 2. Procedure move_to_group
 --    Moves a contact to a group; creates the group if it does not exist
--- ----------------------------------------------------------------
 CREATE OR REPLACE PROCEDURE move_to_group(
     p_contact_name VARCHAR,
     p_group_name   VARCHAR
@@ -72,12 +69,9 @@ BEGIN
     RAISE NOTICE 'Contact "%" moved to group "%"', p_contact_name, p_group_name;
 END;
 $$;
-
--- ----------------------------------------------------------------
 -- 3. Function search_contacts
 --    Extended pattern search: matches name, email, and ALL phone
 --    numbers from the phones table (extends Practice 8 version)
--- ----------------------------------------------------------------
 CREATE OR REPLACE FUNCTION search_contacts(p_query TEXT)
 RETURNS TABLE (
     id         INTEGER,
@@ -109,8 +103,8 @@ BEGIN
         OR c.firstname ILIKE '%' || p_query || '%'
         OR c.lastname  ILIKE '%' || p_query || '%'
         OR c.email     ILIKE '%' || p_query || '%'
-        OR c.phone     ILIKE '%' || p_query || '%'   -- legacy field
-        OR p.phone     ILIKE '%' || p_query || '%'   -- new phones table
+        OR c.phone     ILIKE '%' || p_query || '%'  
+        OR p.phone     ILIKE '%' || p_query || '%'  
     GROUP BY c.id, c.username, c.firstname, c.lastname,
              c.email, c.birthday, g.name
     ORDER BY c.username;
