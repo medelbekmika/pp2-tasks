@@ -101,9 +101,9 @@ class SnakeGame:
 
         if self.audio_available:
             try:
-                self.food_sound = pygame.mixer.Sound(os.path.join(SOUNDS_DIR, "music_food.mp3"))
-                self.gameover_sound = pygame.mixer.Sound(os.path.join(SOUNDS_DIR, "music_gameover.mp3"))
-                self.move_sound = pygame.mixer.Sound(os.path.join(SOUNDS_DIR, "music_move.mp3"))
+                self.food_sound = pygame.mixer.Sound(os.path.join(SOUNDS_DIR, "food-court-1.wav"))
+                self.gameover_sound = pygame.mixer.Sound(os.path.join(SOUNDS_DIR, "gameover.wav"))
+                self.move_sound = pygame.mixer.Sound(os.path.join(SOUNDS_DIR, ""))
 
                 self.food_sound.set_volume(0.6)
                 self.gameover_sound.set_volume(0.7)
